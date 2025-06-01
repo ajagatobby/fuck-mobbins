@@ -286,7 +286,7 @@ const App = () => {
 
   return (
     <motion.div
-      className="w-full min-h-screen bg-white flex items-center justify-center p-4"
+      className="w-full h-screen bg-white flex items-center justify-center p-4"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -347,14 +347,6 @@ const App = () => {
               onKeyPress={(e) =>
                 e.key === "Enter" && !loading && handleSearch()
               }
-              whileFocus={{
-                scale: 1.02,
-                transition: { type: "spring", stiffness: 300, damping: 30 },
-              }}
-              animate={{
-                borderColor:
-                  search && !isValidUrl(search) ? "#ef4444" : "transparent",
-              }}
               transition={{ duration: 0.2 }}
             />
             <motion.button
