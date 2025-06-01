@@ -23,13 +23,13 @@ git clone https://github.com/ajagatobby/fuck-mobbins.git
 cd fuck-mobbins
 
 # Install dependencies
-    pnpm install
+pnpm install
 ```
 
 ## Run app
 
 ```bash
-    pnpm dev
+pnpm dev
 ```
 
 ## Usage
