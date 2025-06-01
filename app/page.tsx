@@ -413,23 +413,12 @@ const App = () => {
               exit="exit"
             >
               <div className="flex justify-between text-sm text-gray-600">
-                <motion.span
-                  className="truncate"
-                  key={progress.currentFile}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
+                <span className="truncate" key={progress.currentFile}>
                   {progress.currentFile}
-                </motion.span>
-                <motion.span
-                  className="flex-shrink-0 ml-2"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
+                </span>
+                <span className="flex-shrink-0 ml-2">
                   {progress.downloaded}/{progress.total}
-                </motion.span>
+                </span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
                 <motion.div
@@ -446,15 +435,10 @@ const App = () => {
                   }}
                 />
               </div>
-              <motion.div
-                className="text-xs text-gray-500 text-center"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.3 }}
-              >
+              <div className="text-xs text-gray-500 text-center">
                 {Math.round((progress.downloaded / progress.total) * 100)}%
                 complete
-              </motion.div>
+              </div>
             </motion.div>
           )}
 

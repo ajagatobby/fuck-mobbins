@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mobbins Screenshot Downloader
 
-## Getting Started
+A tool to download app screenshots from Mobbins, providing an alternative to their paid subscription service.
 
-First, run the development server:
+## Overview
+
+This tool allows you to download app screenshots from Mobbins without requiring a paid subscription. It's designed to help developers and designers access UI references more efficiently.
+
+## Features
+
+- Download all screenshots from any Mobbins app page
+- Simple and easy to use
+- No subscription required
+- Fast and efficient downloads
+
+## Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Clone the repository
+git clone https://github.com/ajagatobby/fuck-mobbins.git
+
+# Navigate to the project directory
+cd fuck-mobbins
+
+# Install dependencies
+    pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Run app
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+    pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Usage
 
-## Learn More
+1. Copy the URL of the app you want to download screenshots from on Mobbins
+2. The URL should be in this format:
+   ```
+   https://mobbin.com/apps/[app-name]-[platform]-[uuid]/[uuid]/screens
+   ```
+   Example:
+   ```
+   https://mobbin.com/apps/airbnb-ios-e62cd3cf-0432-4936-903f-b9c01124e2bb/85abcdd2-8bd7-4331-afd3-a0147602104a/screens
+   ```
+3. Run the tool with the URL as an argument
+4. Screenshots will be downloaded to your local machine
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+MIT License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Disclaimer
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This tool is created for educational purposes. Please respect Mobbins' terms of service and use this tool responsibly.
