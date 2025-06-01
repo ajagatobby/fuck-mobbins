@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -15,8 +15,20 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Fuck Mobbins",
   description: "Download mobbins screenshots",
+  keywords: [
+    "mobbins",
+    "screenshots",
+    "download",
+    "fuck",
+    "mobbins",
+    "screens",
+  ],
   icons: {
     icon: "/favicon.ico",
+  },
+  robots: {
+    index: false,
+    follow: false,
   },
   openGraph: {
     title: "Fuck Mobbins",
@@ -34,6 +46,13 @@ export const metadata: Metadata = {
     images: ["/logo.png"],
   },
   metadataBase: new URL("https://fuck-mobbins.vercel.app"),
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({

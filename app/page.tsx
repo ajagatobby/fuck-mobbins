@@ -340,7 +340,7 @@ const App = () => {
           <div className="relative w-full flex flex-col sm:flex-row gap-2">
             <motion.input
               type="text"
-              placeholder="Paste Mobbin app URL here..."
+              placeholder="https://mobbin.com/apps/grok-ios-a986af54-0747-4589-9332-1f6ed64332c6/297de34b-a5ea-4251-a7d6-378f272a50fc/screens"
               className="w-full p-2 rounded-4xl border-gray-300 border-0 bg-stone-100 h-12 sm:h-14 px-4 focus:outline-none text-sm sm:text-base"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
