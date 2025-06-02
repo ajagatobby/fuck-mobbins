@@ -141,7 +141,7 @@ const App = () => {
     );
 
     // Add files to zip in sorted order
-    for (const screen of sortedScreens) {
+    for (const screen of sortedScreens.reverse()) {
       const file = downloadedFiles.get(screen.screenNumber);
       if (file) {
         zip.file(`${screen.screenNumber}.${file.extension}`, file.blob);
