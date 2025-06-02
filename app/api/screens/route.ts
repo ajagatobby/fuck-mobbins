@@ -116,10 +116,13 @@ export async function GET(request: NextRequest) {
 
       console.log("screens", screens.length);
 
+      const sortedScreens = screens.sort(
+        (a, b) => a.screenNumber - b.screenNumber
+      );
       // Return JSON response with screen data
       return NextResponse.json<ScreensResponse>({
         success: true,
-        screens: screens,
+        screens: sortedScreens,
         total: screens.length,
         message:
           screens.length > 0
