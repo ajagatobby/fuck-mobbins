@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/jszip": "^3.4.1",
+    "@vercel/analytics": "^1.5.0",
     "framer-motion": "^12.15.0",
     "jszip": "^3.10.1",
     "next": "15.3.3",
