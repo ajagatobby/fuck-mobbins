@@ -66,6 +66,10 @@ const App = () => {
 
     let downloaded = 0;
     const total = sortedScreens.length;
+    const downloadedFiles = new Map<
+      number,
+      { blob: Blob; extension: string }
+    >();
 
     setProgress({
       downloaded: 0,
@@ -95,8 +99,11 @@ const App = () => {
         const imageBlob = await response.blob();
         const extension = getFileExtension(screen.screenUrl);
 
-        // Add to zip with screen number as filename
-        zip.file(`${screen.screenNumber}.${extension}`, imageBlob);
+        // Store the downloaded file in the map
+        downloadedFiles.set(screen.screenNumber, {
+          blob: imageBlob,
+          extension,
+        });
 
         downloaded++;
         setProgress((prev) =>
@@ -116,7 +123,6 @@ const App = () => {
           `Failed to download screen ${screen.screenNumber}:`,
           error
         );
-        // Continue with other downloads even if one fails
       }
     });
 
@@ -125,7 +131,6 @@ const App = () => {
 
     if (signal.aborted) throw new DOMException("Aborted", "AbortError");
 
-    // Generate and download zip
     setProgress((prev) =>
       prev
         ? {
@@ -135,13 +140,20 @@ const App = () => {
         : null
     );
 
+    // Add files to zip in sorted order
+    for (const screen of sortedScreens) {
+      const file = downloadedFiles.get(screen.screenNumber);
+      if (file) {
+        zip.file(`${screen.screenNumber}.${file.extension}`, file.blob);
+      }
+    }
+
     const zipBlob = await zip.generateAsync({
       type: "blob",
       compression: "DEFLATE",
       compressionOptions: { level: 6 },
     });
 
-    // Trigger download
     downloadBlob(zipBlob, `${appName}.zip`);
   };
 
