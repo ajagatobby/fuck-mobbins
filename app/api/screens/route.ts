@@ -97,7 +97,7 @@ export async function GET(request: NextRequest) {
                 screenUrl: urlMatch
                   .replace('"screenUrl":"', "")
                   .replace('"', ""),
-                screenNumber: index + 1, // Start from 1 instead of 0
+                screenNumber: index + 1,
               }));
             }
             break;
@@ -114,12 +114,10 @@ export async function GET(request: NextRequest) {
         }
       }
 
-      console.log("screens", screens.length);
-
       const sortedScreens = screens.sort(
         (a, b) => a.screenNumber - b.screenNumber
       );
-      // Return JSON response with screen data
+
       return NextResponse.json<ScreensResponse>({
         success: true,
         screens: sortedScreens,

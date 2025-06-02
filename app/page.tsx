@@ -60,8 +60,12 @@ const App = () => {
     const zip = new JSZip();
     const appName = appSlug.split("-")[0] || "app";
 
+    const sortedScreens = [...screens].sort(
+      (a, b) => a.screenNumber - b.screenNumber
+    );
+
     let downloaded = 0;
-    const total = screens.length;
+    const total = sortedScreens.length;
 
     setProgress({
       downloaded: 0,
@@ -69,8 +73,7 @@ const App = () => {
       currentFile: "Starting download...",
     });
 
-    // Download images with progress tracking
-    const downloadPromises = screens.map(async (screen) => {
+    const downloadPromises = sortedScreens.map(async (screen) => {
       if (signal.aborted) throw new DOMException("Aborted", "AbortError");
 
       try {
@@ -182,7 +185,6 @@ const App = () => {
 
       console.log(`Found ${data.screens.length} screens`);
 
-      // Start downloading and zipping
       await downloadScreensAsZip(data.screens, appSlug, controller.signal);
 
       console.log("Download completed successfully!");
@@ -191,7 +193,6 @@ const App = () => {
         console.log("Download cancelled by user");
       } else {
         console.error("Error:", error);
-        // You could show a toast or alert here
         alert(
           error instanceof Error
             ? error.message
@@ -356,7 +357,7 @@ const App = () => {
                   : "bg-gradient-to-tr from-stone-700 to-black text-white hover:opacity-90"
               } ${
                 !search.trim() || (!loading && !isValidUrl(search))
-                  ? "opacity-50 cursor-not-allowed"
+                  ? "opacity-95 cursor-not-allowed"
                   : ""
               }`}
               onClick={loading ? handleCancel : handleSearch}
